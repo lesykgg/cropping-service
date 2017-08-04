@@ -1,0 +1,11 @@
+.center
+  h1 = 'Crop image'
+  .container
+    = image_tag image.picture.url(:large), onclick: "getImageCoords(event,this);"
+    #point
+  = form_for image do |f|
+    - for attribute in [:point_x, :point_y]
+      = f.text_field attribute, id: attribute
+    = f.submit 'Crop'
+#hidden_field
+  = image.aspect_ratio
