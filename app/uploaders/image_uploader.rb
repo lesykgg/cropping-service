@@ -42,17 +42,17 @@ class ImageUploader < CarrierWave::Uploader::Base
 
       manipulate! do |img|
         case get_quadrant(img)
-          when 1
-            crop_width = crop_height = img.width - x < y ? (img.width - x) * 2 : y * 2
-          when 2
-            crop_width = crop_height = x < y ? x * 2 : y * 2
-          when 3
-            crop_width = crop_height = x < img.height - y ? x * 2 : (img.height - y) * 2
-          when 4
-            crop_width = crop_height = img.width - x < img.height - y ? (img.width - x) * 2 : (img.height - y) * 2
+        when 1
+          crop_width = crop_height = img.width - x < y ? (img.width - x) * 2 : y * 2
+        when 2
+          crop_width = crop_height = x < y ? x * 2 : y * 2
+        when 3
+          crop_width = crop_height = x < img.height - y ? x * 2 : (img.height - y) * 2
+        when 4
+          crop_width = crop_height = img.width - x < img.height - y ? (img.width - x) * 2 : (img.height - y) * 2
         end
 
-        img.crop "#{crop_width}x#{crop_height}+#{x-crop_width/2}+#{y-crop_height/2}"
+        img.crop "#{crop_width}x#{crop_height}+#{x - crop_width / 2}+#{y - crop_height / 2}"
         img
       end
     end
@@ -65,21 +65,21 @@ class ImageUploader < CarrierWave::Uploader::Base
 
       manipulate! do |img|
         case get_quadrant(img)
-          when 1
-            crop_width = y - (img.width - x) / 4 >= 0 ? (img.width - x) * 2 : y * 8
-            crop_height = crop_width / 4
-          when 2
-            crop_width = y - x / 4 >= 0 ? x * 2 : y * 8
-            crop_height = crop_width / 4
-          when 3
-            crop_width = x / 4 + y <= img.height ? x * 2 : (img.height - y) * 8
-            crop_height = crop_width / 4
-          when 4
-            crop_width = (img.width - x) / 4 + y <= img.height ? (img.width - x) * 2 : (img.height - y) * 8
-            crop_height = crop_width / 4
+        when 1
+          crop_width = y - (img.width - x) / 4 >= 0 ? (img.width - x) * 2 : y * 8
+          crop_height = crop_width / 4
+        when 2
+          crop_width = y - x / 4 >= 0 ? x * 2 : y * 8
+          crop_height = crop_width / 4
+        when 3
+          crop_width = x / 4 + y <= img.height ? x * 2 : (img.height - y) * 8
+          crop_height = crop_width / 4
+        when 4
+          crop_width = (img.width - x) / 4 + y <= img.height ? (img.width - x) * 2 : (img.height - y) * 8
+          crop_height = crop_width / 4
         end
 
-        img.crop "#{crop_width}x#{crop_height}+#{x-crop_width/2}+#{y-crop_height/2}"
+        img.crop "#{crop_width}x#{crop_height}+#{x - crop_width / 2}+#{y - crop_height / 2}"
         img
       end
     end
@@ -92,28 +92,28 @@ class ImageUploader < CarrierWave::Uploader::Base
 
       manipulate! do |img|
         case get_quadrant(img)
-          when 1
-            crop_height = y / 4 + x <= img.width ? y * 2 : (img.width - x) * 8
-            crop_width = crop_height / 4
-          when 2
-            crop_height = x - y / 4 >= 0 ? y * 2 : x * 8
-            crop_width = crop_height / 4
-          when 3
-            crop_height = x - (img.height - y) / 4 >= 0 ? (img.height - y) * 2 : x * 8
-            crop_width = crop_height / 4
-          when 4
-            crop_height = (img.height - y) / 4 + x <= img.width ? (img.height - y) * 2 : (img.width - x) * 8
-            crop_width = crop_height / 4
+        when 1
+          crop_height = y / 4 + x <= img.width ? y * 2 : (img.width - x) * 8
+          crop_width = crop_height / 4
+        when 2
+          crop_height = x - y / 4 >= 0 ? y * 2 : x * 8
+          crop_width = crop_height / 4
+        when 3
+          crop_height = x - (img.height - y) / 4 >= 0 ? (img.height - y) * 2 : x * 8
+          crop_width = crop_height / 4
+        when 4
+          crop_height = (img.height - y) / 4 + x <= img.width ? (img.height - y) * 2 : (img.width - x) * 8
+          crop_width = crop_height / 4
         end
 
-        img.crop "#{crop_width}x#{crop_height}+#{x-crop_width/2}+#{y-crop_height/2}"
+        img.crop "#{crop_width}x#{crop_height}+#{x - crop_width / 2}+#{y - crop_height / 2}"
         img
       end
     end
   end
 
   def extension_whitelist
-    %w(jpg jpeg gif png)
+    %w[jpg jpeg gif png]
   end
 
   private
