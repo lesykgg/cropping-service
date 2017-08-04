@@ -17,22 +17,22 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   version :cropped50_50 do
     process :cropper1x1
-    resize_to_fit(50, 50)
+    resize_to_fill(50, 50)
   end
 
   version :cropped500_500 do
     process :cropper1x1
-    resize_to_fit(500, 500)
+    resize_to_fill(500, 500)
   end
 
   version :cropped1000_250 do
     process :cropper4x1
-    resize_to_fit(1000, 250)
+    resize_to_fill(1000, 250)
   end
 
   version :cropped250_1000 do
     process :cropper1x4
-    resize_to_fit(250, 1000)
+    resize_to_fill(250, 1000)
   end
 
   def cropper1x1
@@ -66,7 +66,7 @@ class ImageUploader < CarrierWave::Uploader::Base
       manipulate! do |img|
         case get_quadrant(img)
           when 1
-            crop_width = (img.width - x) / 4 + y >= 0 ? (img.width - x) * 2 : y * 8
+            crop_width = y - (img.width - x) / 4 >= 0 ? (img.width - x) * 2 : y * 8
             crop_height = crop_width / 4
           when 2
             crop_width = y - x / 4 >= 0 ? x * 2 : y * 8
@@ -99,7 +99,7 @@ class ImageUploader < CarrierWave::Uploader::Base
             crop_height = x - y / 4 >= 0 ? y * 2 : x * 8
             crop_width = crop_height / 4
           when 3
-            crop_height = (img.heigth - y) / 4 + x >= 0 ? (img.height - y) * 2 : x * 8
+            crop_height = x - (img.height - y) / 4 >= 0 ? (img.height - y) * 2 : x * 8
             crop_width = crop_height / 4
           when 4
             crop_height = (img.height - y) / 4 + x <= img.width ? (img.height - y) * 2 : (img.width - x) * 8

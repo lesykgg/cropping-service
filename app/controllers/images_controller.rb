@@ -9,19 +9,21 @@ class ImagesController < ApplicationController
   def create
     @image = Image.new(image_params)
     if image.save
-      redirect_to image_path(image)
+      flash[:success] = 'Image was successfully uploaded'
+      redirect_to image
+    else
+      flash[:danger] = 'Please, select image'
+      redirect_to root_path
     end
   end
 
   def update
     if image.update_attributes(image_params)
       if params[:image][:picture].present?
-        render :crop
+        render :show
       else
-        redirect_to image, notice: "Successfully updated image."
+        redirect_to image
       end
-    else
-      render :new
     end
   end
 
@@ -36,6 +38,6 @@ class ImagesController < ApplicationController
   end
 
   def image_params
-    params.require(:image).permit(:picture, :point_x, :point_y, :cropped)
+    params.fetch(:image, {}).permit(:picture, :point_x, :point_y, :cropped)
   end
 end

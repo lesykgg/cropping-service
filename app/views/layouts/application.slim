@@ -8,7 +8,7 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   body
-    header.navbar.navbar-fixed-top.navbar-inverse
-      .navbar-inner
-        = link_to 'Cropping service', root_path, id: 'logo'
-    = yield
+    .container
+      == render 'layouts/header'
+      == render 'layouts/flash'
+      = yield

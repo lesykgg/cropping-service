@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 
-gem 'rails', '~> 5.0.4'
+gem 'rails', '~> 5.1.3'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
@@ -24,10 +24,10 @@ gem 'carrierwave'
 gem 'mini_magick'
 
 group :development, :test do
-  gem 'rspec'
   gem 'rspec-rails'
   gem 'pry-rails'
   gem 'faker'
+  gem 'database_cleaner'
 end
 
 group :development do
@@ -40,6 +40,8 @@ end
 group :test do
   gem 'factory_girl_rails'
   gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'launchy'
   gem 'simplecov', require: false
 end
 

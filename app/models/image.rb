@@ -1,5 +1,6 @@
 class Image < ApplicationRecord
   mount_uploader :picture, ImageUploader
+  validates_presence_of :picture
 
   after_update :crop_image
 
