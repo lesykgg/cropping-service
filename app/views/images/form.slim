@@ -1,5 +1,5 @@
 .center
-  h1 = 'Upload image'
+  h1 = t('image.upload')
   = simple_form_for image do |f|
     = f.input :picture, as: :file, label: false
-    = f.submit 'Upload image', class: 'btn btn-primary'
+    = f.submit t('image.upload'), class: 'btn btn-primary'

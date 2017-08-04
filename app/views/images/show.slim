@@ -1,15 +1,15 @@
 .center
-  h2 = 'Download cropped images'
+  h2 = t('image.download-cropped-images')
 
 ul
   li
-    = link_to 'Download 50x50',    image.picture.url(:cropped50_50)
+    = link_to "#{t('image.download')} 50x50",    image.picture.url(:cropped50_50)
   li
-    = link_to 'Download 500x500',  image.picture.url(:cropped500_500)
+    = link_to "#{t('image.download')} 500x500",  image.picture.url(:cropped500_500)
   li
-    = link_to 'Download 1000x250', image.picture.url(:cropped1000_250)
+    = link_to "#{t('image.download')} 1000x250", image.picture.url(:cropped1000_250)
   li
-    = link_to 'Download 250x1000', image.picture.url(:cropped250_1000)
+    = link_to "#{t('image.download')} 250x1000", image.picture.url(:cropped250_1000)
 
 .center
-  = link_to 'Crop again', image_path(image, image: { cropped: false } ),  method: :put, class: 'btn btn-primary'
+  = link_to t('image.crop-again'), image_path(image, image: { cropped: false } ),  method: :put, class: 'btn btn-primary'

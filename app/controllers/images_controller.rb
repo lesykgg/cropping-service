@@ -9,10 +9,10 @@ class ImagesController < ApplicationController
   def create
     @image = Image.new(image_params)
     if image.save
-      flash[:success] = 'Image was successfully uploaded'
+      flash[:success] = t('flash.upload-success')
       redirect_to image
     else
-      flash[:danger] = 'Please, select image'
+      flash[:danger] = t('flash.image-missing')
       redirect_to root_path
     end
   end
