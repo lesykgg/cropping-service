@@ -13,6 +13,5 @@ coverage
 .idea
 
 config/database.yml
-config/secrets.yml
 config/settings.yml
 .ruby-gemset
