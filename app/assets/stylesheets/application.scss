@@ -26,6 +26,11 @@ input[type='file']{
   text-align: center;
 }
 
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
 #hidden_field {
   display: none;
 }

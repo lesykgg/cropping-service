@@ -1,6 +1,6 @@
 .center
   h1 = 'Crop image'
-  .container
+  .image-container
     = image_tag image.picture.url(:large), onclick: "getImageCoords(event,this);"
     #point
   = form_for image do |f|
