@@ -4,6 +4,7 @@ en:
   flash:
     upload-success: Image was successfully uploaded
     image-missing: 'Please, select image. Supported formats: jpg, jpeg, gif, png'
+
   image:
     upload: Upload image
     crop-image: Crop image

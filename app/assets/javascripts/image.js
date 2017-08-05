@@ -1,18 +1,6 @@
-function getImageCoords(event, img) {
-    var rect = img.getBoundingClientRect();
-    var posX = event.offsetX ? (event.offsetX) : event.pageX - img.offsetLeft;
-    var posY = event.offsetY ? (event.offsetY) : event.pageY - img.offsetTop;
-
-    movePoint(posX - 5, posY - 5);
-
-    var multiplier = $('#hidden_field').text();
-    $('#point_x').val(parseInt(posX*multiplier));
-    $('#point_y').val(parseInt(posY*multiplier));
-}
-
 function movePoint(x, y) {
-    var color = '#000000';
-    var size = '10px';
+    const color = '#000000';
+    const size = '10px';
     $("#point")
         .css('position', 'absolute')
         .css('top', y + 'px')
@@ -24,11 +12,24 @@ function movePoint(x, y) {
 
 }
 
+function getImageCoords(event, img) {
+    // const rect = img.getBoundingClientRect();
+    const posX = event.offsetX ? (event.offsetX) : event.pageX - img.offsetLeft;
+    const posY = event.offsetY ? (event.offsetY) : event.pageY - img.offsetTop;
+
+    movePoint(posX - 5, posY - 5);
+
+    const multiplier = $('#hidden_field').text();
+    $('#point_x').val(parseInt(posX * multiplier));
+    $('#point_y').val(parseInt(posY * multiplier));
+}
+
 $(document).ready(function() {
     $('#point_x, #point_y').on('input', function() {
-        var multiplier = $('#hidden_field').text();
+        const multiplier = $('#hidden_field').text();
         const x = $('#point_x').val() / multiplier;
         const y = $('#point_y').val() / multiplier;
+
         movePoint(x - 5, y - 5);
     });
 });

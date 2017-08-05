@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Image upload' do
-  before { visit '/' }
+  before { visit root_path }
 
   context 'valid input' do
     it 'creates new image' do

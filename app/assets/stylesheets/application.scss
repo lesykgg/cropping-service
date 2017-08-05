@@ -5,9 +5,10 @@ body {
   padding-top: 35px;
 }
 
-input[type='file']{
+input[type='file'] {
   display: inline-block;
 }
+
 .navbar {
   min-height: 35px;
   margin-bottom: 0;
@@ -27,8 +28,8 @@ input[type='file']{
 }
 
 .image-container {
-  position: relative;
   display: inline-block;
+  position: relative;
 }
 
 #hidden_field {
@@ -46,6 +47,7 @@ input[type='file']{
   padding-top: 5px;
   font-weight: bold;
   line-height: 1;
+
   &:hover {
     color: #fff;
     text-decoration: none;
