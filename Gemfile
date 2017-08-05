@@ -15,6 +15,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'slim-rails'
 gem 'simple_form'
 gem 'bootstrap-sass'
+gem 'font-awesome-rails'
 
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'

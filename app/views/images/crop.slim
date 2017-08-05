@@ -4,10 +4,12 @@
     = image_tag image.picture.url(:large), onclick: "getImageCoords(event,this);"
     #point
 
-  = form_for image do |f|
-    - for attribute in [:point_x, :point_y]
-      = f.text_field attribute, id: attribute
-    = f.submit t('image.crop')
+  = simple_form_for image, wrapper: :inline_form, html: {class: 'form-inline'} do |f|
+    = f.input :point_x, as: :integer, input_html: {id: 'point_x', placeholder: 'X'}
+    = f.input :point_y, as: :integer, input_html: {id: 'point_y', placeholder: 'Y'}
+    = f.button :button, t('image.crop'), type: :submit,
+            class: 'btn btn-success',
+            data: {disable_with: '<i class="fa fa-spinner fa-spin"></i> Cropping...'.html_safe}
 
 #hidden_field
   = image.aspect_ratio

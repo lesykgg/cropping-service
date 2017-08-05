@@ -36,7 +36,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def cropper1x1
-    return unless model.point_x
+    return unless model.point_x.present?
 
     manipulate! do |img|
       case get_quadrant(img)
@@ -56,7 +56,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def cropper4x1
-    return unless model.point_x
+    return unless model.point_x.present?
 
     manipulate! do |img|
       case get_quadrant(img)
@@ -80,7 +80,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def cropper1x4
-    return unless model.point_x
+    return unless model.point_x.present?
 
     manipulate! do |img|
       case get_quadrant(img)

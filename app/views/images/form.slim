@@ -3,4 +3,5 @@
 
   = simple_form_for image do |f|
     = f.input :picture, as: :file, label: false
-    = f.submit t('image.upload'), class: 'btn btn-primary'
+    = f.button :button, t('image.upload'), type: :submit, class: 'btn btn-primary',
+            data: {disable_with: '<i class="fa fa-spinner fa-spin"></i> Uploading...'.html_safe}

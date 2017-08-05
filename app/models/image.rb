@@ -10,7 +10,7 @@ class Image < ApplicationRecord
   validates_presence_of :picture
 
   def crop_image
-    return unless point_x
+    return unless point_x.present?
 
     picture.recreate_versions!
     update_columns(cropped: true)
