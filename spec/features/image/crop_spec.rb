@@ -40,10 +40,10 @@ RSpec.describe 'Image crop' do
       fill_in 'image[point_y]', with: '150'
       click_button 'Crop'
 
-      expect(uploader.cropped50_50).to have_dimensions(50,50)
-      expect(uploader.cropped500_500).to have_dimensions(500,500)
-      expect(uploader.cropped1000_250).to have_dimensions(1000,250)
-      expect(uploader.cropped250_1000).to have_dimensions(250,1000)
+      expect(uploader.cropped50x50).to have_dimensions(50,50)
+      expect(uploader.cropped500x500).to have_dimensions(500,500)
+      expect(uploader.cropped1000x250).to have_dimensions(1000,250)
+      expect(uploader.cropped250x1000).to have_dimensions(250,1000)
     end
   end
 end
