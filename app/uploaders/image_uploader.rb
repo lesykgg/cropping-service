@@ -33,11 +33,18 @@ class ImageUploader < CarrierWave::Uploader::Base
   def cropper(width, height)
     return unless model.point_x.present?
 
-    point = { x: model.point_x, y: model.point_y }
     dimensions = { width: width, height: height }
+    point      = { x: model.point_x, y: model.point_y }
 
     manipulate! do |img|
-      advanced_cropper(img, dimensions, point)
+      image_dimensions      = { width: img.width, height: img.height }
+      image_crop_dimensions = crop_dimensions(image_dimensions, dimensions, point)
+
+      crop_width  = image_crop_dimensions[:crop_width]
+      crop_height = image_crop_dimensions[:crop_height]
+
+      img.crop "#{crop_width}x#{crop_height}+#{point[:x] - crop_width / 2}+#{point[:y] - crop_height / 2}"
+      img
     end
     resize_to_fill(width, height)
   end
