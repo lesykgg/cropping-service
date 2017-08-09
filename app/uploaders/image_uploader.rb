@@ -43,7 +43,7 @@ class ImageUploader < CarrierWave::Uploader::Base
       crop_width  = image_crop_dimensions[:crop_width]
       crop_height = image_crop_dimensions[:crop_height]
 
-      img.crop "#{crop_width}x#{crop_height}+#{point[:x] - crop_width / 2}+#{point[:y] - crop_height / 2}"
+      img.crop "#{crop_width}x#{crop_height}+#{point[:x].to_i - crop_width / 2}+#{point[:y].to_i - crop_height / 2}"
       img
     end
     resize_to_fill(width, height)
