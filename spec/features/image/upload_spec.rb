@@ -4,7 +4,7 @@ RSpec.describe 'Image upload' do
   before { visit root_path }
 
   context 'valid input' do
-    it 'creates new image' do
+    it 'uploads image' do
       attach_file('image[picture]', File.join(Rails.root, '/spec/support/example.jpeg'))
 
       expect{ click_button 'Upload image' }.to change{ Image.count }.by(1)
@@ -12,7 +12,7 @@ RSpec.describe 'Image upload' do
   end
   
   context 'invalid input' do
-    it 'shouldnt create image' do
+    it 'refuses to upload image' do
       click_button 'Upload image'
 
       expect(page).to have_current_path('/')
