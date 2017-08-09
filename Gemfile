@@ -46,6 +46,7 @@ group :test do
   gem 'selenium-webdriver'
   gem 'launchy'
   gem 'simplecov', require: false
+  gem 'coveralls', require: false
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

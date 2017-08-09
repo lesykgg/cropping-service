@@ -1,6 +1,15 @@
 require 'pry-rails'
 require 'simplecov'
 
+if ENV['CI']
+  require 'coveralls'
+  Coveralls.wear!('rails')
+  SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
+      SimpleCov::Formatter::HTMLFormatter,
+      Coveralls::SimpleCov::Formatter
+  ]
+end
+
 SimpleCov.start 'rails'
 
 RSpec.configure do |config|
